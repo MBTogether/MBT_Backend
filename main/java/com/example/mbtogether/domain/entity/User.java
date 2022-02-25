@@ -16,7 +16,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private int id;
+    private Integer id;
 
     @Column(length = 30)
     private String oauth_id;
