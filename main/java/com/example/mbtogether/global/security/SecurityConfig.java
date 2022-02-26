@@ -17,6 +17,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
 
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private final JwtTokenFilter jwtTokenFilter;
+    private final JwtTokenProvider jwtTokenProvider;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -29,14 +30,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
                 .cors().disable()
                 .csrf().disable()
                 .formLogin().disable()
+                .apply(new FilterConfigure(jwtTokenProvider))
+                .and()
                 .addFilter(jwtTokenFilter)
                 .authorizeRequests()
-                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/admin/**").hasAuthority("ADMIN")
                 .antMatchers("/**").permitAll()
                     .and()
                 .exceptionHandling()
                 .authenticationEntryPoint(jwtAuthenticationEntryPoint);
-                
+
 
     }
 }
