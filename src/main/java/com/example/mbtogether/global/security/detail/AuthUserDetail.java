@@ -1,6 +1,6 @@
 package com.example.mbtogether.global.security.detail;
 
-import com.example.mbtogether.domain.entity.User;
+import com.example.mbtogether.domain.user.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
