@@ -19,7 +19,7 @@ public class AuthUserDetail implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         ArrayList<GrantedAuthority> auth = new ArrayList<>();
-        auth.add(new SimpleGrantedAuthority("USER"));
+        auth.add(new SimpleGrantedAuthority(user.getAuthority()));
         return auth;
     }
 
@@ -30,7 +30,7 @@ public class AuthUserDetail implements UserDetails {
 
     @Override
     public String getUsername() {
-        return null;
+        return String.valueOf(user.getId());
     }
 
     @Override
@@ -52,4 +52,5 @@ public class AuthUserDetail implements UserDetails {
     public boolean isEnabled() {
         return false;
     }
+
 }

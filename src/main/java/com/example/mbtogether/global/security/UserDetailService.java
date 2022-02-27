@@ -17,13 +17,10 @@ public class UserDetailService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-
     @Override
     public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
-
         User user = userRepository.findById(Integer.valueOf(id)).orElseThrow(() -> new UsernameNotFoundException(id));
-
         return new AuthUserDetail(user);
-
     }
+
 }

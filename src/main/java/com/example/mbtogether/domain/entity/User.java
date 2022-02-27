@@ -9,28 +9,30 @@ import javax.persistence.*;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Entity
-@Table(name="USERS")
+@Table(name="USER")
 public class User {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
 
-    @Column(length = 30)
-    private String oauth_id;
+    @Column(nullable = false)
+    private String oauthId;
 
-    @Column(length = 50)
-    private String oauth_type;
+    @Column(nullable = false)
+    private String oauthType;
 
-    @Column(length = 20, nullable = false)
+    @Column(nullable = false)
     private String nickname;
 
-    @Column(length = 100)
+    @Column(nullable = false)
     private String introduction;
 
-    @Column(length = 7, nullable = false)
+    @Column(nullable = false)
     private String mbti;
+
+    @Column(nullable = false)
+    private String authority;
 
 }
