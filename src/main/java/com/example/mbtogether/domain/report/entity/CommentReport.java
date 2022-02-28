@@ -1,7 +1,6 @@
 package com.example.mbtogether.domain.report.entity;
 
 import com.example.mbtogether.domain.comment.entity.Comment;
-import com.example.mbtogether.domain.post.entity.Post;
 import com.example.mbtogether.domain.user.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,7 +19,7 @@ public class CommentReport {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
