@@ -1,0 +1,21 @@
+package com.example.mbtogether.infrastructure;
+
+import feign.Logger;
+import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@EnableFeignClients(basePackages = "com.example.mbtogether.infrastructure")
+public class FeignConfiguration {
+
+    @Bean
+    Logger.Level feignLoggerLevel() {
+        return Logger.Level.BASIC;
+    }
+
+    @Bean
+    public FeignClientErrorDecoder commonFeignErrorDecoder(){
+        return new FeignClientErrorDecoder();
+    }
+}
