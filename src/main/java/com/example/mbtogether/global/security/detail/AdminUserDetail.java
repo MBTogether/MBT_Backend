@@ -12,14 +12,14 @@ import java.util.Collection;
 
 @Getter
 @AllArgsConstructor
-public class AuthUserDetail implements UserDetails {
+public class AdminUserDetail implements UserDetails {
 
     private final User user;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         ArrayList<GrantedAuthority> auth = new ArrayList<>();
-        auth.add(new SimpleGrantedAuthority("USER"));
+        auth.add(new SimpleGrantedAuthority("ADMIN"));
         return auth;
     }
 
