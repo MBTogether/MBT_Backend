@@ -1,5 +1,7 @@
 package com.example.mbtogether.global.error;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -7,16 +9,9 @@ import lombok.Getter;
 @AllArgsConstructor
 public class ErrorResponse {
 
-    private final int status;
-    private final String error;
-    private final String code;
     private final String message;
 
-    public ErrorResponse(ErrorCode errorCode, String message){
-        this.status = errorCode.getHttpStatus().value();
-        this.error = errorCode.getHttpStatus().name();
-        this.code = errorCode.name();
-        this.message = message;
+    public String convertToJson(Object object) throws JsonProcessingException{
+        return new ObjectMapper().writeValueAsString(object);
     }
-
 }
