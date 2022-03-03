@@ -9,11 +9,9 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 @Getter
 @RequiredArgsConstructor
 public enum ErrorCode {
+    INTERNAL_SERVER_ERROR(500, "Internal Server Error"),
+    INVALID_INPUT_VALUE(400, "Invalid Input Value");
 
-    INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "Internal Server Error"),
-    INVALID_INPUT_VALUE(BAD_REQUEST, "Invalid Input Value");
-
-    private final HttpStatus httpStatus;
+    private final int httpStatus;
     private final String message;
-
 }
