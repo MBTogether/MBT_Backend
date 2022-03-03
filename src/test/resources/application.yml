@@ -1,3 +1,6 @@
+auth:
+  jwt:
+    secret: asdf
 spring:
   h2:
     console:
@@ -5,3 +8,8 @@ spring:
   datasource:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:testdb
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+  jpa:
+    generate-ddl: true
+    show-sql: true
