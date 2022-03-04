@@ -12,3 +12,8 @@ spring:
   jpa:
     generate-ddl: false
     show-sql: false
+
+oauth:
+  kakao:
+    client-id: ${KAKAO_ID}
+    redirect-uri: ${KAKAO_URI}
