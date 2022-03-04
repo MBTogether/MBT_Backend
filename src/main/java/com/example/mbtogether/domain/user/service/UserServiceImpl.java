@@ -1,18 +1,17 @@
 package com.example.mbtogether.domain.user.service;
 
-import com.example.mbtogether.domain.good.entity.Good;
 import com.example.mbtogether.domain.post.entity.Post;
 import com.example.mbtogether.domain.user.dto.UserDto;
+import com.example.mbtogether.domain.user.dto.UserIntroduceDto;
+import com.example.mbtogether.domain.user.dto.UserNameDto;
 import com.example.mbtogether.domain.user.entity.User;
 import com.example.mbtogether.domain.user.repository.UserRepository;
 import com.example.mbtogether.global.security.AuthenticationFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -23,23 +22,29 @@ public class UserServiceImpl implements UserService{
     private final AuthenticationFacade authenticationFacade;
 
     @Override
-    public Optional<User> userInformation(){
-        return userRepository.findById(authenticationFacade.getUserId());
+    public UserDto userInformation(){
+        User user = userRepository.findById(authenticationFacade.getUserId()).get();
+        UserDto userDto = UserDto.builder()
+                .id(user.getId())
+                .mbti(user.getMbti())
+                .introduction(user.getIntroduction())
+                .nickName(user.getNickname())
+                .build();
+
+        return userDto;
     }
 
     @Override
-    @Transactional
-    public String nameChange(@RequestBody UserDto userDto){
+    public String nameChange(UserNameDto userNameDto){
         User user = userRepository.findById(authenticationFacade.getUserId()).get();
-        user.setNickname(userDto.getNickname());
+        user.setNickname(userNameDto.getNickname());
         return user.getNickname();
     }
 
     @Override
-    @Transactional
-    public String introducesChange(@RequestBody UserDto userDto){
+    public String introducesChange(UserIntroduceDto userIntroduceDto){
         User user = userRepository.findById(authenticationFacade.getUserId()).get();
-        user.setIntroduction(userDto.getIntroduction());
+        user.setIntroduction((userIntroduceDto.getIntroduction()));
         return user.getIntroduction();
     }
 
@@ -49,15 +54,17 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public List<Post> myPost(){
+    public String myPost(){
         User user = userRepository.findById(authenticationFacade.getUserId()).get();
-        return user.getPosts();
+        List<Post> userListDto = user.getPosts();
+        return userListDto.toString();
     }
 
     @Override
-    public List<Good> goodPost(){
+    public String goodPost(){
         User user = userRepository.findById(authenticationFacade.getUserId()).get();
-        return user.getGoods();
+        List<Post> userListDto = user.getPosts();
+        return userListDto.toString();
     }
 
 }

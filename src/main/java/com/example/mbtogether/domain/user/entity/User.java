@@ -5,15 +5,13 @@ import com.example.mbtogether.domain.good.entity.Good;
 import com.example.mbtogether.domain.post.entity.Post;
 import com.example.mbtogether.domain.report.entity.CommentReport;
 import com.example.mbtogether.domain.report.entity.PostReport;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Builder
+@Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor

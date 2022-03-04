@@ -11,20 +11,13 @@ import java.util.List;
 
 @Builder
 @Getter
-@Setter
-@AllArgsConstructor
+@RequiredArgsConstructor
 @NoArgsConstructor
 public class UserDto {
 
     private Integer id;
-    private String oauthId;
-    private String nickname;
+    private String nickName;
     private String introduction;
     private String mbti;
-    private String authority;
-    private List<Post> posts;
-    private List<Comment> comments;
-    private List<Good> goods;
-    private List<PostReport> postReports;
-    private List<CommentReport> commentReports;
+
 }
