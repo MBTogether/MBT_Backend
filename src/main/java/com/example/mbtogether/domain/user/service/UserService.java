@@ -5,6 +5,7 @@ import com.example.mbtogether.domain.user.api.dto.response.KakaoLinkResponse;
 import com.example.mbtogether.domain.user.api.dto.response.TokenResponse;
 import com.example.mbtogether.domain.user.entity.User;
 import com.example.mbtogether.domain.user.repository.UserRepository;
+import com.example.mbtogether.global.security.JwtTokenProvider;
 import com.example.mbtogether.infrastructure.client.KakaoAuth;
 import com.example.mbtogether.infrastructure.client.KakaoInfoClient;
 import com.example.mbtogether.infrastructure.dto.request.KakaoTokenRequest;
@@ -29,6 +30,7 @@ public class UserService {
     private final KakaoAuth kakaoAuth;
     private final KakaoInfoClient kakaoInfoClient;
     private final UserRepository userRepository;
+    private final JwtTokenProvider jwtTokenProvider;
 
     @Value("${oauth.kakao.client-id}")
     private String kakaoClientId;
@@ -66,8 +68,9 @@ public class UserService {
     }
 
     private TokenResponse getToken(String oauthId) {
-        String accessToken = "accessToken 자리";
-        String refreshToken = "refreshToken 자리";
+
+        String accessToken = jwtTokenProvider.generateAccessToken(oauthId);
+        String refreshToken = jwtTokenProvider.generateRefreshToken(oauthId);
 
         return new TokenResponse(accessToken, refreshToken);
     }
