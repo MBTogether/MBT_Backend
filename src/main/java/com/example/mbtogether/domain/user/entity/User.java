@@ -5,13 +5,15 @@ import com.example.mbtogether.domain.good.entity.Good;
 import com.example.mbtogether.domain.post.entity.Post;
 import com.example.mbtogether.domain.report.entity.CommentReport;
 import com.example.mbtogether.domain.report.entity.PostReport;
+import com.example.mbtogether.domain.user.dto.Request.UserIntroduceRequest;
+import com.example.mbtogether.domain.user.dto.Request.UserNameRequest;
+import com.example.mbtogether.domain.user.dto.Request.UserRequest;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Builder
-@Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -56,4 +58,11 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<CommentReport> commentReports;
 
+    public void nameChange(UserNameRequest req){
+        this.nickname = req.getNickname();
+    }
+
+    public void introducesChange(UserIntroduceRequest req){
+        this.introduction = req.getIntroduction();
+    }
 }

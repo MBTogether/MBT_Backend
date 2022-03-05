@@ -1,11 +1,14 @@
 package com.example.mbtogether.domain.user.controller;
 
-import com.example.mbtogether.domain.user.dto.UserDto;
-import com.example.mbtogether.domain.user.dto.UserIntroduceDto;
-import com.example.mbtogether.domain.user.dto.UserNameDto;
+import com.example.mbtogether.domain.post.dto.response.PostListResponse;
+import com.example.mbtogether.domain.user.dto.Request.UserIntroduceRequest;
+import com.example.mbtogether.domain.user.dto.Request.UserNameRequest;
+import com.example.mbtogether.domain.user.dto.Response.UserResponse;
 import com.example.mbtogether.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -15,18 +18,18 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping
-    public UserDto userInformation(){
+    public UserResponse userInformation(){
         return userService.userInformation();
     }
 
     @PatchMapping("/nickname")
-    private String changeName(UserNameDto userNameDto){
-        return userService.nameChange(userNameDto);
+    private void changeName(UserNameRequest userNameDto){
+        userService.nameChange(userNameDto);
     }
 
     @PatchMapping("/introduces")
-    public String changeIntroduces(UserIntroduceDto userIntroduceDto){
-        return userService.introducesChange(userIntroduceDto);
+    public void changeIntroduces(UserIntroduceRequest userIntroduceDto){
+        userService.introducesChange(userIntroduceDto);
     }
 
     @DeleteMapping
@@ -35,12 +38,12 @@ public class UserController {
     }
 
     @GetMapping("/like-list")
-    public String myPost(){
+    public List<PostListResponse> myPost(){
         return userService.myPost();
     }
 
     @GetMapping("/title-list")
-    public String goodPost(){
+    public List<PostListResponse> goodPost(){
         return userService.goodPost();
     }
 }

@@ -1,22 +1,23 @@
 package com.example.mbtogether.domain.user.service;
 
-import com.example.mbtogether.domain.user.dto.UserDto;
-import com.example.mbtogether.domain.user.dto.UserIntroduceDto;
-import com.example.mbtogether.domain.user.dto.UserNameDto;
-import org.springframework.web.bind.annotation.RequestBody;
+import com.example.mbtogether.domain.post.dto.response.PostListResponse;
+import com.example.mbtogether.domain.user.dto.Response.UserResponse;
+import com.example.mbtogether.domain.user.dto.Request.UserIntroduceRequest;
+import com.example.mbtogether.domain.user.dto.Request.UserNameRequest;
+
+import java.util.List;
 
 public interface UserService{
 
+    UserResponse userInformation();
 
-    UserDto userInformation();
+    void nameChange(UserNameRequest userNameDto);
 
-    String nameChange(UserNameDto userNameDto);
-
-    String introducesChange(UserIntroduceDto userIntroduceDto);
+    void introducesChange(UserIntroduceRequest userIntroduceDto);
 
     void delUser();
 
-    String myPost();
+    List<PostListResponse> myPost();
 
-    String goodPost();
+    List<PostListResponse> goodPost();
 }
