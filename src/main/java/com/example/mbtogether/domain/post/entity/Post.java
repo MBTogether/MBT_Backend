@@ -55,4 +55,15 @@ public class Post {
     @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
     private List<PostReport> postReports;
 
+    public Post(String title, String content, String coverUrl){
+        this.title = title;
+        this.content = content;
+        this.coverUrl = coverUrl;
+    }
+
+    public void update(String title, String content, String coverUrl){
+        this.title = title;
+        this.content = content;
+        this.coverUrl = coverUrl;
+    }
 }
