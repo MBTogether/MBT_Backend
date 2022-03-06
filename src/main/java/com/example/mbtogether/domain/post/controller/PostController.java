@@ -9,6 +9,7 @@ import com.example.mbtogether.domain.post.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -18,12 +19,12 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping("/board")
-    public void post(@RequestBody PostDto dto){
+    public void post(@RequestBody @Valid PostDto dto){
         postService.post(dto);
     }
 
     @PatchMapping("/board")
-    public void update(@RequestBody UpdateDto dto){
+    public void update(@RequestBody @Valid UpdateDto dto){
         postService.update(dto);
     }
 
