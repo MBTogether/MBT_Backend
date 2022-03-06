@@ -4,9 +4,9 @@ import com.example.mbtogether.domain.post.controller.request.PostDto;
 import com.example.mbtogether.domain.post.controller.request.UpdateDto;
 import com.example.mbtogether.domain.post.controller.response.DetailDto;
 import com.example.mbtogether.domain.post.controller.response.ListDto;
-import com.example.mbtogether.domain.post.entity.Post;
 import com.example.mbtogether.domain.post.service.PostService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
