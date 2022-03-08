@@ -32,4 +32,9 @@ public class CommentReport {
     @Column(nullable = false)
     private String content;
 
+    public CommentReport(Comment commentId, String content){
+        this.comment = commentId;
+        this.content = content;
+    }
+
 }
