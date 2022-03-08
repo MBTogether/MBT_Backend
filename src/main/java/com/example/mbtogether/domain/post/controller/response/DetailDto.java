@@ -19,7 +19,7 @@ public class DetailDto {
     private LocalDate date;
     private String coverUrl;
     private List<Image> images;
-    private int like;
+    private int likeCount;
 
     public DetailDto(Post post){
         this.id = post.getId();
@@ -28,6 +28,6 @@ public class DetailDto {
         this.date = post.getDate();
         this.coverUrl = post.getCoverUrl();
         this.images = post.getImages();
-        this.like = post.getGoods().size();
+        this.likeCount = post.getGoods().size();
     }
 }

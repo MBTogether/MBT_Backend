@@ -30,4 +30,7 @@ public class Good {
     @JoinColumn(name = "user_id")
     private User user;
 
+    public Good(Post post){
+        this.post = post;
+    }
 }

@@ -6,8 +6,8 @@ import com.example.mbtogether.domain.post.controller.response.DetailDto;
 import com.example.mbtogether.domain.post.controller.response.ListDto;
 import com.example.mbtogether.domain.post.service.PostService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -56,5 +56,16 @@ public class PostController {
     @GetMapping("/board")
     public List<ListDto> search(@RequestParam("word") String searchWord){
         return postService.search(searchWord);
+    }
+
+    @PostMapping("/image")
+    public String uploadImage(@RequestPart MultipartFile image) throws Exception{
+        String imageUrl = postService.uploadImage(image);
+        return imageUrl;
+    }
+
+    @PostMapping("/image/list")
+    public void uploadImageList(@RequestPart List<MultipartFile> image) throws Exception{
+        postService.uploadImageList(image);
     }
 }

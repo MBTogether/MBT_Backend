@@ -4,16 +4,20 @@ import com.example.mbtogether.domain.post.controller.request.PostDto;
 import com.example.mbtogether.domain.post.controller.request.UpdateDto;
 import com.example.mbtogether.domain.post.controller.response.DetailDto;
 import com.example.mbtogether.domain.post.controller.response.ListDto;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface PostService {
-    public void post(PostDto dto);
-    public void update(UpdateDto dto);
-    public void delete(int id);
-    public DetailDto detail(int id);
-    public List<ListDto> mbtiList(String mbti);
-    public List<ListDto> popularList();
-    public List<ListDto> latestList();
-    public List<ListDto> search(String searchWord);
+    void post(PostDto dto);
+    void update(UpdateDto dto);
+    void delete(int id);
+    DetailDto detail(int id);
+    List<ListDto> mbtiList(String mbti);
+    List<ListDto> popularList();
+    List<ListDto> latestList();
+    List<ListDto> search(String searchWord);
+    String uploadImage(MultipartFile image) throws IOException;
+    void uploadImageList(List<MultipartFile> image) throws IOException;
 }

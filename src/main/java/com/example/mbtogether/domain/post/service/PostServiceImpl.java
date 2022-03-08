@@ -4,22 +4,27 @@ import com.example.mbtogether.domain.post.controller.request.PostDto;
 import com.example.mbtogether.domain.post.controller.request.UpdateDto;
 import com.example.mbtogether.domain.post.controller.response.DetailDto;
 import com.example.mbtogether.domain.post.controller.response.ListDto;
+import com.example.mbtogether.domain.post.entity.Image;
 import com.example.mbtogether.domain.post.entity.Post;
+import com.example.mbtogether.domain.post.repository.ImageRepository;
 import com.example.mbtogether.domain.post.repository.PostRepository;
 import com.example.mbtogether.global.error.ErrorCode;
 import com.example.mbtogether.global.error.Exception.CustomException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 public class PostServiceImpl implements PostService{
 
     private final PostRepository postRepository;
+    private final ImageRepository imageRepository;
 
     @Override
     public void post(PostDto dto) {
@@ -119,5 +124,32 @@ public class PostServiceImpl implements PostService{
             }
         }
         return mbtiListDto;
+    }
+
+    @Override
+    public String uploadImage(MultipartFile image) {
+        UUID uuid = UUID.randomUUID();
+        String imageName = uuid + "-" + image.getOriginalFilename();
+
+        Image saveImage = new Image(imageName);
+
+        imageRepository.save(saveImage);
+        return imageName;
+    }
+
+    @Override
+    public void uploadImageList(List<MultipartFile> image) {
+
+        int number = 0;
+
+        for(MultipartFile multipartFile : image){
+            UUID uuid = UUID.randomUUID();
+            String imageName = uuid + "-" + image.get(number).getOriginalFilename();
+            number++;
+
+            Image saveImage = new Image(imageName);
+
+            imageRepository.save(saveImage);
+        }
     }
 }
