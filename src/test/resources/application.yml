@@ -13,3 +13,7 @@ spring:
   jpa:
     generate-ddl: true
     show-sql: true
+oauth:
+  kakao:
+    client-id: asdf
+    redirect-uri: http://asdf.com
