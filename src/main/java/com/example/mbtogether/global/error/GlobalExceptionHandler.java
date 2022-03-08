@@ -1,6 +1,6 @@
 package com.example.mbtogether.global.error;
 
-import com.example.mbtogether.global.error.Exception.CustomException;
+import com.example.mbtogether.global.error.exception.CustomException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -20,13 +20,6 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleValidException(MethodArgumentNotValidException e) {
         return new ResponseEntity<>(
                 new ErrorResponse(e.getBindingResult().getAllErrors().get(0).getDefaultMessage()),HttpStatus.BAD_REQUEST
-        );
-    }
-
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorResponse> handleException(Exception e) {
-        return new ResponseEntity<>(
-                new ErrorResponse(ErrorCode.INTERNAL_SERVER_ERROR.getMessage()), HttpStatus.valueOf(ErrorCode.INTERNAL_SERVER_ERROR.getHttpStatus())
         );
     }
 }
