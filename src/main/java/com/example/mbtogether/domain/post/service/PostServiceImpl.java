@@ -9,7 +9,7 @@ import com.example.mbtogether.domain.post.entity.Post;
 import com.example.mbtogether.domain.post.repository.ImageRepository;
 import com.example.mbtogether.domain.post.repository.PostRepository;
 import com.example.mbtogether.global.error.ErrorCode;
-import com.example.mbtogether.global.error.Exception.CustomException;
+import com.example.mbtogether.global.error.exception.CustomException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -34,19 +34,19 @@ public class PostServiceImpl implements PostService{
 
     @Override
     public void update(UpdateDto dto) {
-        Post post = postRepository.findById(dto.getId()).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND, ErrorCode.NOT_FOUND.getMessage()));
+        Post post = postRepository.findById(dto.getId()).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND));
         post.update(dto.getTitle(), dto.getContent(), dto.getCoverUrl());
     }
 
     @Override
     public void delete(int id) {
-        Post post = postRepository.findById(id).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND, ErrorCode.NOT_FOUND.getMessage()));
+        Post post = postRepository.findById(id).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND));
         postRepository.delete(post);
     }
 
     @Override
     public DetailDto detail(int id) {
-        Post post = postRepository.findById(id).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND, ErrorCode.NOT_FOUND.getMessage()));
+        Post post = postRepository.findById(id).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND));
         return new DetailDto(post);
     }
 
@@ -140,12 +140,9 @@ public class PostServiceImpl implements PostService{
     @Override
     public void uploadImageList(List<MultipartFile> image) {
 
-        int number = 0;
-
         for(MultipartFile multipartFile : image){
             UUID uuid = UUID.randomUUID();
-            String imageName = uuid + "-" + image.get(number).getOriginalFilename();
-            number++;
+            String imageName = uuid + "-" + multipartFile.getOriginalFilename();
 
             Image saveImage = new Image(imageName);
 

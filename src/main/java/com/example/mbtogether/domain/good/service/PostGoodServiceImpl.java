@@ -6,7 +6,7 @@ import com.example.mbtogether.domain.post.entity.Post;
 import com.example.mbtogether.domain.post.repository.PostRepository;
 import com.example.mbtogether.domain.user.entity.User;
 import com.example.mbtogether.global.error.ErrorCode;
-import com.example.mbtogether.global.error.Exception.CustomException;
+import com.example.mbtogether.global.error.exception.CustomException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +23,7 @@ public class PostGoodServiceImpl implements PostGoodService {
 
     @Override
     public void insertGood(int postId) {
-        Post post = postRepository.findById(postId).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND, ErrorCode.NOT_FOUND.getMessage()));
+        Post post = postRepository.findById(postId).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND));
         Good good = new Good(post);
 
         if(isNotAlreadyLike(good.getUser(), post)){
@@ -36,7 +36,7 @@ public class PostGoodServiceImpl implements PostGoodService {
 
     @Override
     public void deleteGood(int postId) {
-        Post post = postRepository.findById(postId).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND, ErrorCode.NOT_FOUND.getMessage()));
+        Post post = postRepository.findById(postId).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND));
         Good good = new Good(post);
         goodRepository.delete(good);
     }
