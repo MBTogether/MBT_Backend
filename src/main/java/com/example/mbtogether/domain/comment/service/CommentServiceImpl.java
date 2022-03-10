@@ -12,6 +12,8 @@ import com.example.mbtogether.domain.report.entity.CommentReport;
 import com.example.mbtogether.domain.report.repository.ReportRepository;
 import com.example.mbtogether.domain.report.request.ReportDto;
 import com.example.mbtogether.domain.user.entity.User;
+import com.example.mbtogether.global.error.ErrorCode;
+import com.example.mbtogether.global.error.Exception.CustomException;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -31,7 +33,7 @@ public class CommentServiceImpl implements CommentService{
 
     @Override
     public void chatGood(@PathVariable int commentId){
-        Comment comment = commentRepository.findById(commentId).get();
+        Comment comment = commentRepository.findById(commentId).orElseThrow(() -> new CustomException(ErrorCode.OTHER_SERVER_NOT_FOUND));
         User user = new User();
         Optional<CommentLike> byCommentUser = commentLikeRepositroy.findByCommentAndUser(comment,user);
 
@@ -57,7 +59,7 @@ public class CommentServiceImpl implements CommentService{
 
     @Override
     public void chatDel(@PathVariable int Id){
-        Comment comment = commentRepository.findById(Id).get();
+        Comment comment = commentRepository.findById(Id).orElseThrow(() -> new CustomException(ErrorCode.OTHER_SERVER_NOT_FOUND));
         commentRepository.delete(comment);
     }
 
@@ -69,7 +71,7 @@ public class CommentServiceImpl implements CommentService{
 
     @Override
     public List<CommentList> chatList(@PathVariable int postId){
-        Post post = postRepository.findById(postId).get();
+        Post post = postRepository.findById(postId).orElseThrow(() -> new CustomException(ErrorCode.OTHER_SERVER_NOT_FOUND));
         List<Comment> comments = commentRepository.findAll();
         List<CommentList> commentLists = new ArrayList<>();
 
@@ -91,7 +93,7 @@ public class CommentServiceImpl implements CommentService{
 
     @Override
     public void createChat(@PathVariable int postId, CommentDto commentDto){
-        Post post = postRepository.findById(postId).get();
+        Post post = postRepository.findById(postId).orElseThrow(() -> new CustomException(ErrorCode.OTHER_SERVER_BAD_REQUEST));
         Comment comment = new Comment(commentDto.getComment(), post.getId());
         commentRepository.save(comment);
     }

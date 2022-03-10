@@ -2,6 +2,7 @@ package com.example.mbtogether.domain.user.controller;
 
 import com.example.mbtogether.domain.post.dto.response.PostListResponse;
 import com.example.mbtogether.domain.user.dto.request.UserIntroduceRequest;
+import com.example.mbtogether.domain.user.dto.request.UserMbtiRequest;
 import com.example.mbtogether.domain.user.dto.request.UserNameRequest;
 import com.example.mbtogether.domain.user.dto.response.UserResponse;
 import com.example.mbtogether.domain.user.service.UserService;
@@ -45,5 +46,10 @@ public class UserController {
     @GetMapping("/title-list")
     public List<PostListResponse> goodPost(){
         return userService.goodPost();
+    }
+
+    @PatchMapping("/mbti")
+    public void changeMbti(UserMbtiRequest request){
+        userService.mbtiChange(request);
     }
 }

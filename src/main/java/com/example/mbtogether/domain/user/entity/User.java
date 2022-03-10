@@ -7,6 +7,7 @@ import com.example.mbtogether.domain.post.entity.Post;
 import com.example.mbtogether.domain.report.entity.CommentReport;
 import com.example.mbtogether.domain.report.entity.PostReport;
 import com.example.mbtogether.domain.user.dto.request.UserIntroduceRequest;
+import com.example.mbtogether.domain.user.dto.request.UserMbtiRequest;
 import com.example.mbtogether.domain.user.dto.request.UserNameRequest;
 import lombok.*;
 
@@ -66,6 +67,10 @@ public class User {
 
     public void nameChange(UserNameRequest req){
         this.nickname = req.getNickname();
+    }
+
+    public void mbtiChange(UserMbtiRequest req){
+        this.mbti = req.getMbti();
     }
 
     public void introducesChange(UserIntroduceRequest req){
