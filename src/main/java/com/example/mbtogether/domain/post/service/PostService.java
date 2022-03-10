@@ -4,14 +4,15 @@ import com.example.mbtogether.domain.post.controller.request.PostDto;
 import com.example.mbtogether.domain.post.controller.request.UpdateDto;
 import com.example.mbtogether.domain.post.controller.response.DetailDto;
 import com.example.mbtogether.domain.post.controller.response.ListDto;
+import com.example.mbtogether.domain.post.entity.Post;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
 
 public interface PostService {
-    void post(PostDto dto);
-    void update(UpdateDto dto);
+    Post post(PostDto dto);
+    Post update(UpdateDto dto);
     void delete(int id);
     DetailDto detail(int id);
     List<ListDto> mbtiList(String mbti);

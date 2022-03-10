@@ -4,7 +4,9 @@ import com.example.mbtogether.domain.post.controller.request.PostDto;
 import com.example.mbtogether.domain.post.controller.request.UpdateDto;
 import com.example.mbtogether.domain.post.controller.response.DetailDto;
 import com.example.mbtogether.domain.post.controller.response.ListDto;
+import com.example.mbtogether.domain.post.entity.Post;
 import com.example.mbtogether.domain.post.service.PostService;
+import com.example.mbtogether.global.security.AuthenticationFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,13 +21,15 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping("/board")
-    public void post(@RequestBody @Valid PostDto dto){
-        postService.post(dto);
+    public Post post(@RequestBody @Valid PostDto dto){
+        Post post = postService.post(dto);
+        return post;
     }
 
     @PatchMapping("/board")
-    public void update(@RequestBody @Valid UpdateDto dto){
-        postService.update(dto);
+    public Post update(@RequestBody @Valid UpdateDto dto){
+        Post post = postService.update(dto);
+        return post;
     }
 
     @DeleteMapping("/board/{id}")

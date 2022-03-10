@@ -12,5 +12,5 @@ public class PostDto {
     private String title;
     @NotEmpty
     private String content;
-    private String coverUrl;
+    private String cover_url;
 }

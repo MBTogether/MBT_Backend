@@ -58,7 +58,9 @@ public class Post {
     public Post(String title, String content, String coverUrl){
         this.title = title;
         this.content = content;
+        this.date = LocalDate.now();
         this.coverUrl = coverUrl;
+
     }
 
     public void update(String title, String content, String coverUrl){

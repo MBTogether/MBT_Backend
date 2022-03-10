@@ -8,6 +8,8 @@ import com.example.mbtogether.domain.post.entity.Image;
 import com.example.mbtogether.domain.post.entity.Post;
 import com.example.mbtogether.domain.post.repository.ImageRepository;
 import com.example.mbtogether.domain.post.repository.PostRepository;
+import com.example.mbtogether.domain.user.entity.User;
+import com.example.mbtogether.domain.user.repository.UserRepository;
 import com.example.mbtogether.global.error.ErrorCode;
 import com.example.mbtogether.global.error.exception.CustomException;
 import lombok.RequiredArgsConstructor;
@@ -27,15 +29,17 @@ public class PostServiceImpl implements PostService{
     private final ImageRepository imageRepository;
 
     @Override
-    public void post(PostDto dto) {
-        Post post = new Post(dto.getTitle(), dto.getContent(), dto.getCoverUrl());
+    public Post post(PostDto dto) {
+        Post post = new Post(dto.getTitle(), dto.getContent(), dto.getCover_url());
         postRepository.save(post);
+        return post;
     }
 
     @Override
-    public void update(UpdateDto dto) {
+    public Post update(UpdateDto dto) {
         Post post = postRepository.findById(dto.getId()).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND));
         post.update(dto.getTitle(), dto.getContent(), dto.getCoverUrl());
+        return post;
     }
 
     @Override
