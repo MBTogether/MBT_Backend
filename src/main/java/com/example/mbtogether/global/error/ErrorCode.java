@@ -13,7 +13,9 @@ public enum ErrorCode {
     OTHER_SERVER_BAD_REQUEST(400, "Bad Request."),
     OTHER_SERVER_UNAUTHORIZED(401, "Unauthorized token."),
     OTHER_SERVER_EXPIRED_TOKEN(401, "Expired token."),
-    OTHER_SERVER_FORBIDDEN(403, "Forbidden Consumer.");
+    OTHER_SERVER_FORBIDDEN(403, "Forbidden Consumer."),
+    OTHER_SERVER_NOT_FOUND(404, "Not Found."),
+    OTHER_SERVER_CONFLICT(409, "Conflict");
 
     private final int httpStatus;
     private final String message;
