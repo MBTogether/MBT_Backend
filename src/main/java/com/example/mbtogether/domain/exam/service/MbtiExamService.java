@@ -31,7 +31,7 @@ public class MbtiExamService {
 
     private List<MbtiExamResponse> getMbtiExamByType(String type1, String type2, int size) {
         long count = mbtiExamRepository.countByMbtiTypeOrMbtiType(type1, type2);
-        int page = (int) (count/size - 1);
+        int page = (int) (count/size);
         PageRequest pageRequest = PageRequest.of(random.nextInt(page), size);
         return mbtiExamRepository.findByMbtiTypeOrMbtiType(pageRequest, type1, type2)
                 .stream().map(MbtiExamResponse::from)

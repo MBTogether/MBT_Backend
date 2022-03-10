@@ -28,7 +28,7 @@ public class MbtiExamServiceTest {
     private MbtiExamRepository mbtiExamRepository;
 
     @Test
-    @DisplayName("getMbtiExam 함수 테스트")
+    @DisplayName("getMbtiExam Method Test")
     void testGetMbtiExam() {
         //given
         List<MbtiExam> mbtiExams = new ArrayList<>();
