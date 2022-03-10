@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-@Builder
 @Getter
 @NoArgsConstructor
 public class PostListResponse {
@@ -16,6 +15,7 @@ public class PostListResponse {
     private String coverUrl;
     private LocalDate date;
 
+    @Builder
     public PostListResponse(String title, LocalDate date, String coverUrl, int id){
         this.title = title;
         this.date = date;
