@@ -11,7 +11,7 @@ import com.example.mbtogether.domain.user.entity.User;
 import com.example.mbtogether.domain.user.repository.UserRepository;
 import com.example.mbtogether.global.error.ErrorCode;
 
-import com.example.mbtogether.global.error.Exception.CustomException;
+import com.example.mbtogether.global.error.exception.CustomException;
 import com.example.mbtogether.global.security.AuthenticationFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
