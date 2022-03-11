@@ -24,7 +24,7 @@ import java.util.List;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserPageService {
 
     private final PostRepository postRepository;
     private final UserRepository userRepository;
