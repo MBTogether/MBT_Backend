@@ -10,7 +10,7 @@ import com.example.mbtogether.domain.post.repository.PostRepository;
 import com.example.mbtogether.domain.user.entity.User;
 import com.example.mbtogether.domain.user.repository.UserRepository;
 import com.example.mbtogether.global.error.ErrorCode;
-import com.example.mbtogether.global.error.Exception.CustomException; 
+import com.example.mbtogether.global.error.Exception.CustomException;
 import com.example.mbtogether.global.security.AuthenticationFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
