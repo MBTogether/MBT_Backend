@@ -18,5 +18,6 @@ public enum ErrorCode {
     OTHER_SERVER_CONFLICT(409, "Conflict");
 
     private final int httpStatus;
+
     private final String message;
 }
