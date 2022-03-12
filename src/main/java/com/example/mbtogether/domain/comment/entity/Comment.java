@@ -33,13 +33,32 @@ public class Comment {
     private Post post;
 
     @Column(nullable = false)
+    private int likeCount;
+
+    @Column(nullable = false)
     private String comment;
 
     @OneToMany(mappedBy = "comment", cascade = CascadeType.REMOVE)
     private List<CommentReport> commentReports;
 
-    public Comment(String comment, Integer id) {
+    @OneToMany(mappedBy = "comment", cascade = CascadeType.REMOVE)
+    private List<CommentLike> commentLikeList = new ArrayList<>();
+
+    public void mappingCommentLike(CommentLike commentLike){
+        this.commentLikeList.add(commentLike);
+    }
+
+    public void updateLikeCount(){
+        this.likeCount = (int) this.commentLikeList.size();
+    }
+
+    public void discountLike(CommentLike commentLike){
+        this.commentLikeList.remove(commentLike);
+    }
+
+    public Comment(String comment, int id){
         this.comment = comment;
         this.id = id;
     }
+
 }

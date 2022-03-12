@@ -4,16 +4,15 @@ import com.example.mbtogether.domain.comment.dto.request.CommentDto;
 import com.example.mbtogether.domain.comment.dto.response.CommentList;
 import com.example.mbtogether.domain.comment.service.CommentService;
 import com.example.mbtogether.domain.report.request.ReportDto;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@AllArgsConstructor
 @RequestMapping("/comments")
-@RequiredArgsConstructor
 public class CommentController {
-
     private final CommentService commentService;
 
     @DeleteMapping("/{id}")
@@ -29,6 +28,16 @@ public class CommentController {
     @PostMapping("/{postId}")
     public void createChat(@PathVariable int postId, CommentDto commentDto){
         commentService.createChat(postId,commentDto);
+    }
+
+    @PostMapping("/likes/{commentId}")
+    public void chatLike(@PathVariable int commentId){
+        commentService.chatGood(commentId);
+    }
+
+    @DeleteMapping("/likes/{commentId}")
+    public void chatUnLike(@PathVariable int commentId) {
+        commentService.chatGood(commentId);
     }
 
     @GetMapping("chat-list/{postId}")

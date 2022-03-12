@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 
 public interface CommentService {
-
     void chatDel(@PathVariable int id);
+
+    void chatGood(@PathVariable int commentId);
 
     void reportChat(ReportDto reportDto);
 

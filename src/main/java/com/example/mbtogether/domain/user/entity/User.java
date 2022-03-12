@@ -1,16 +1,18 @@
 package com.example.mbtogether.domain.user.entity;
 
 import com.example.mbtogether.domain.comment.entity.Comment;
+import com.example.mbtogether.domain.comment.entity.CommentLike;
 import com.example.mbtogether.domain.good.entity.Good;
 import com.example.mbtogether.domain.post.entity.Post;
 import com.example.mbtogether.domain.report.entity.CommentReport;
 import com.example.mbtogether.domain.report.entity.PostReport;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.example.mbtogether.domain.user.dto.request.UserIntroduceRequest;
+import com.example.mbtogether.domain.user.dto.request.UserMbtiRequest;
+import com.example.mbtogether.domain.user.dto.request.UserNameRequest;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Builder
@@ -57,5 +59,22 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<CommentReport> commentReports;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<CommentLike> commentLikeList = new ArrayList<>();
+
+    public void mappingCommentLike(CommentLike commentLike) { this.commentLikeList.add(commentLike); }
+
+    public void nameChange(UserNameRequest req){
+        this.nickname = req.getNickname();
+    }
+
+    public void mbtiChange(UserMbtiRequest req){
+        this.mbti = req.getMbti();
+    }
+
+    public void introducesChange(UserIntroduceRequest req){
+        this.introduction = req.getIntroduction();
+    }
 
 }
