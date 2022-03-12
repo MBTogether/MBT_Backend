@@ -1,7 +1,6 @@
 package com.example.mbtogether.domain.user.entity;
 
 import com.example.mbtogether.domain.comment.entity.Comment;
-import com.example.mbtogether.domain.comment.entity.CommentLike;
 import com.example.mbtogether.domain.good.entity.Good;
 import com.example.mbtogether.domain.post.entity.Post;
 import com.example.mbtogether.domain.report.entity.CommentReport;
@@ -15,7 +14,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Builder
@@ -62,11 +60,6 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<CommentReport> commentReports;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
-    private List<CommentLike> commentLikeList = new ArrayList<>();
-
-    public void mappingCommentLike(CommentLike commentLike) { this.commentLikeList.add(commentLike); }
 
     public void nameChange(UserNameRequest req){
         this.nickname = req.getNickname();
