@@ -5,7 +5,7 @@ import com.example.mbtogether.domain.user.dto.request.UserIntroduceRequest;
 import com.example.mbtogether.domain.user.dto.request.UserMbtiRequest;
 import com.example.mbtogether.domain.user.dto.request.UserNameRequest;
 import com.example.mbtogether.domain.user.dto.response.UserResponse;
-import com.example.mbtogether.domain.user.service.UserService;
+import com.example.mbtogether.domain.user.service.UserPageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserController {
 
-    private final UserService userService;
+    private final UserPageService userService;
 
     @GetMapping
     public UserResponse userInformation(){

@@ -20,6 +20,4 @@ public class GoodId implements Serializable {
     @Column(nullable = false)
     private String userId;
 
-    @Column(nullable = false)
-    private String commentId;
 }

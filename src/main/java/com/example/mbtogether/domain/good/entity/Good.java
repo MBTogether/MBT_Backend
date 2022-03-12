@@ -31,9 +31,8 @@ public class Good {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
-    @MapsId("commentId")
-    @JoinColumn(name = "comment_id")
-    private Comment comment;
-
+    public Good(Post post, User user){
+        this.post = post;
+        this.user = user;
+    }
 }

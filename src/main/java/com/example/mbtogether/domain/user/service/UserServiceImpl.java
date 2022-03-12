@@ -3,13 +3,14 @@ package com.example.mbtogether.domain.user.service;
 import com.example.mbtogether.domain.post.dto.response.PostListResponse;
 import com.example.mbtogether.domain.post.entity.Post;
 import com.example.mbtogether.domain.post.repository.PostRepository;
-import com.example.mbtogether.domain.user.dto.request.UserMbtiRequest;
-import com.example.mbtogether.domain.user.dto.response.UserResponse;
 import com.example.mbtogether.domain.user.dto.request.UserIntroduceRequest;
+import com.example.mbtogether.domain.user.dto.request.UserMbtiRequest;
 import com.example.mbtogether.domain.user.dto.request.UserNameRequest;
+import com.example.mbtogether.domain.user.dto.response.UserResponse;
 import com.example.mbtogether.domain.user.entity.User;
 import com.example.mbtogether.domain.user.repository.UserRepository;
 import com.example.mbtogether.global.error.ErrorCode;
+
 import com.example.mbtogether.global.error.Exception.CustomException;
 import com.example.mbtogether.global.security.AuthenticationFacade;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +24,7 @@ import java.util.List;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserPageService {
 
     private final PostRepository postRepository;
     private final UserRepository userRepository;

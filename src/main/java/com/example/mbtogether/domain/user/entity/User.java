@@ -9,7 +9,10 @@ import com.example.mbtogether.domain.report.entity.PostReport;
 import com.example.mbtogether.domain.user.dto.request.UserIntroduceRequest;
 import com.example.mbtogether.domain.user.dto.request.UserMbtiRequest;
 import com.example.mbtogether.domain.user.dto.request.UserNameRequest;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;

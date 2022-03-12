@@ -9,24 +9,22 @@ import lombok.Getter;
 
 import java.time.LocalDate;
 
-@Builder
 @Getter
+@Builder
 @AllArgsConstructor
 public class CommentList {
-        String comment;
-        LocalDate date;
-        int id;
-        int likeCount;
-        boolean unLike;
-        String userName;
-        String userMbti;
+    String comment;
+    LocalDate date;
+    int id;
+    boolean unLike;
+    String userName;
+    String userMbti;
 
-        public CommentList(Comment comment, User user, Post post){
-            this.comment = comment.getComment();
-            this.date = post.getDate();
-            this.id = user.getId();
-            this.userName = user.getNickname();
-            this.userMbti = user.getMbti();
-            this.likeCount = comment.getLikeCount();
-        }
+    public CommentList(Comment comment, User user, Post post){
+        this.comment = comment.getComment();
+        this.date = post.getDate();
+        this.id = user.getId();
+        this.userName = user.getNickname();
+        this.userMbti = user.getMbti();
+    }
 }
