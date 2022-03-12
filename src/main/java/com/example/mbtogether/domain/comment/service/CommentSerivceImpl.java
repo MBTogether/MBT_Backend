@@ -10,7 +10,7 @@ import com.example.mbtogether.domain.report.entity.CommentReport;
 import com.example.mbtogether.domain.report.repository.ReportRepository;
 import com.example.mbtogether.domain.report.request.ReportDto;
 import com.example.mbtogether.global.error.ErrorCode;
-import com.example.mbtogether.global.error.Exception.CustomException;
+import com.example.mbtogether.global.error.exception.CustomException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
