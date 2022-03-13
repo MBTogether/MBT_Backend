@@ -28,10 +28,10 @@ public class MbtiExamControllerTest {
     @DisplayName("/mbti-exam Api Test")
     void testGetMbtiExam() throws Exception {
         // given
-        String[] mbtiKind = {"I", "E", "N", "S", "F", "T", "P", "J"};
-        for(String mbti : mbtiKind) {
+        Character[] mbtiKind = {'I', 'E', 'N', 'S', 'F', 'T', 'P', 'J'};
+        for(Character mbti : mbtiKind) {
             MbtiExam mbtiExam = MbtiExam.builder()
-                    .content("테스트")
+                    .question("테스트")
                     .mbtiType(mbti)
                     .build();
             mbtiExamRepository.save(mbtiExam);

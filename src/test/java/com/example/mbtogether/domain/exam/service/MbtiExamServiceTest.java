@@ -33,8 +33,8 @@ public class MbtiExamServiceTest {
         //given
         List<MbtiExam> mbtiExams = new ArrayList<>();
         MbtiExam mbtiExam = MbtiExam.builder()
-                .content("테스트")
-                .mbtiType("대충 MBTI 타입임")
+                .question("테스트")
+                .mbtiType('I')
                 .build();
         mbtiExams.add(mbtiExam);
         mbtiExams.add(mbtiExam);
