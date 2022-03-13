@@ -1,6 +1,6 @@
 auth:
   jwt:
-   secret: ${JWT_SECRET_KEY:}
+   secret: ${JWT_SECRET_KEY:dGVzdA==}
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -10,10 +10,19 @@ spring:
   jackson:
     property-naming-strategy: SNAKE_CASE
   jpa:
-    generate-ddl: false
-    show-sql: false
+    generate-ddl: true
+    show-sql: true
 
 oauth:
   kakao:
     client-id: ${KAKAO_ID}
     redirect-uri: ${KAKAO_URI}
+    secret: ${KAKAO_SECRET}
+
+  google:
+    client-id: ${GOOGLE_ID}
+    redirect-uri: ${GOOGLE_URI}
+
+  facebook:
+    client-id: ${FACEBOOK_ID:}
+    redirect-uri: ${FACEBOOK_URI}
