@@ -1,21 +1,28 @@
 package com.example.mbtogether.domain.exam.api;
 
+import com.example.mbtogether.domain.exam.api.dto.request.MbtiExamRequest;
 import com.example.mbtogether.domain.exam.api.dto.response.MbtiExamResponse;
 import com.example.mbtogether.domain.exam.service.MbtiExamService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequestMapping("/mbti-exam")
 @RestController
 @RequiredArgsConstructor
 public class MbtiExamController {
 
     private final MbtiExamService mbtiExamService;
 
-    @GetMapping("/mbti-exam")
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping
+    public void mbtiExamCreate(@RequestBody final MbtiExamRequest req){
+        mbtiExamService.mbtiExamCreate(req);
+    }
+
+    @GetMapping
     public List<MbtiExamResponse> getMbtiExam(@RequestParam("size") int size) {
         return mbtiExamService.getMbtiExam(size);
     }
