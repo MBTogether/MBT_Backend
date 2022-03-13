@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 public enum ErrorCode {
     INTERNAL_SERVER_ERROR(500, "Internal Server Error"),
     INVALID_INPUT_VALUE(400, "Invalid Input Value"),
+    INVALID_TOKEN(401, "Invalid Token"),
+    REFRESH_TOKEN_NOT_FOUND(404, "Refresh Token Not Found"),
 
     OTHER_SERVER_BAD_REQUEST(400, "Bad Request."),
     OTHER_SERVER_UNAUTHORIZED(401, "Unauthorized token."),
