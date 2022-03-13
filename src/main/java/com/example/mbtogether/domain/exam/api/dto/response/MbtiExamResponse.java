@@ -12,7 +12,7 @@ public class MbtiExamResponse {
     private String mbtiType;
 
     public static MbtiExamResponse from(MbtiExam mbtiExam) {
-        return new MbtiExamResponse(mbtiExam.getContent(), mbtiExam.getMbtiType());
+        return new MbtiExamResponse(mbtiExam.getQuestion(), mbtiExam.getMbtiType());
     }
 
 }

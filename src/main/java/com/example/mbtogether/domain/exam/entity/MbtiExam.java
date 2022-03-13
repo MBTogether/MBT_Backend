@@ -20,7 +20,7 @@ public class MbtiExam {
     private Integer id;
 
     @Column(nullable = false)
-    private String content;
+    private String question;
 
     @Column(nullable = false)
     private String mbtiType;
