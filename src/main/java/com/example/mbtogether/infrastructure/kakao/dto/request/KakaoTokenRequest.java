@@ -1,4 +1,4 @@
-package com.example.mbtogether.infrastructure.dto.request;
+package com.example.mbtogether.infrastructure.kakao.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
