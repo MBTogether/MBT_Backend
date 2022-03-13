@@ -43,14 +43,14 @@ public class MbtiExamService {
     @Transactional(readOnly = true)
     public List<MbtiExamResponse> getMbtiExam(int size) {
         List<MbtiExamResponse> response = new ArrayList<>(size*4);
-        response.addAll(getMbtiExamByType("I", "E", size));
-        response.addAll(getMbtiExamByType("N", "S", size));
-        response.addAll(getMbtiExamByType("F", "T", size));
-        response.addAll(getMbtiExamByType("P", "J", size));
+        response.addAll(getMbtiExamByType('I', 'E', size));
+        response.addAll(getMbtiExamByType('N', 'S', size));
+        response.addAll(getMbtiExamByType('F', 'T', size));
+        response.addAll(getMbtiExamByType('P', 'J', size));
         return response;
     }
 
-    private List<MbtiExamResponse> getMbtiExamByType(String type1, String type2, int size) {
+    private List<MbtiExamResponse> getMbtiExamByType(Character type1, Character type2, int size) {
         long count = mbtiExamRepository.countByMbtiTypeOrMbtiType(type1, type2);
         int page = (int) (count/size);
         PageRequest pageRequest = PageRequest.of(random.nextInt(page), size);

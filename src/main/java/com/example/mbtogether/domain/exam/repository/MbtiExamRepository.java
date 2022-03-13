@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface MbtiExamRepository extends PagingAndSortingRepository<MbtiExam, Integer> {
 
-    long countByMbtiTypeOrMbtiType(String mbtiType1, String mbtiType2);
-    List<MbtiExam> findByMbtiTypeOrMbtiType(Pageable pageable, String mbtiType1, String mbtiType2);
+    long countByMbtiTypeOrMbtiType(Character mbtiType1, Character mbtiType2);
+    List<MbtiExam> findByMbtiTypeOrMbtiType(Pageable pageable, Character mbtiType1, Character mbtiType2);
 
 }

@@ -14,8 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.BDDMockito.given;
 
 @ExtendWith(SpringExtension.class)
@@ -39,9 +38,9 @@ public class MbtiExamServiceTest {
         mbtiExams.add(mbtiExam);
         mbtiExams.add(mbtiExam);
 
-        given(mbtiExamRepository.countByMbtiTypeOrMbtiType(anyString(), anyString()))
+        given(mbtiExamRepository.countByMbtiTypeOrMbtiType(anyChar(), anyChar()))
                 .willReturn(10L);
-        given(mbtiExamRepository.findByMbtiTypeOrMbtiType(any(), anyString(), anyString()))
+        given(mbtiExamRepository.findByMbtiTypeOrMbtiType(any(), anyChar(), anyChar()))
                 .willReturn(mbtiExams);
 
         //when
