@@ -10,8 +10,6 @@ import com.example.mbtogether.domain.user.repository.UserRepository;
 import com.example.mbtogether.global.exception.InvalidTokenException;
 import com.example.mbtogether.global.exception.RefreshTokenNotFoundException;
 import com.example.mbtogether.global.security.JwtTokenProvider;
-import com.example.mbtogether.infrastructure.facebook.client.FacebookAuth;
-import com.example.mbtogether.infrastructure.facebook.client.FacebookInfoClient;
 import com.example.mbtogether.infrastructure.google.client.GoogleAuth;
 import com.example.mbtogether.infrastructure.google.client.GoogleInfoClient;
 import com.example.mbtogether.infrastructure.google.dto.request.GoogleTokenRequest;
