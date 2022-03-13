@@ -25,11 +25,12 @@ public class UserController {
     public GoogleLinkResponse getGoogleLink() {
         return userService.getGoogleLink();
     }
-
+/*
     @GetMapping("/auth/facebook")
     public FacebookLinkResponse getFacebookLink() {
         return userService.getFacebookLink();
     }
+ */
 
     @PostMapping("/auth/kakao")
     @ResponseStatus(HttpStatus.CREATED)
@@ -42,12 +43,13 @@ public class UserController {
     public TokenResponse googleRegister(@RequestBody @Valid RegisterRequest request) {
         return userService.googleRegister(request);
     }
-
+/*
     @PostMapping("/auth/facebook")
     @ResponseStatus(HttpStatus.CREATED)
     public TokenResponse facebookRegister(@RequestBody @Valid RegisterRequest request) {
         return userService.facebookRegister(request);
     }
+ */
 
     @PostMapping("/kakao/login")
     @ResponseStatus(HttpStatus.OK)
@@ -60,12 +62,13 @@ public class UserController {
     public LoginResponse googleLogin(@RequestBody @Valid LoginRequest request) {
         return userService.googleLogin(request);
     }
-
+/*
     @PostMapping("/facebook/login")
     @ResponseStatus(HttpStatus.OK)
     public LoginResponse facebookLogin(@RequestBody @Valid LoginRequest request) {
         return userService.facebookLogin(request);
     }
+ */
 
     @PutMapping("/reissue")
     public TokenResponse reissue(@RequestHeader(name = "x-refresh-token") String token) {
