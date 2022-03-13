@@ -23,6 +23,6 @@ public class MbtiExam {
     private String question;
 
     @Column(nullable = false)
-    private String mbtiType;
+    private Character mbtiType;
 
 }

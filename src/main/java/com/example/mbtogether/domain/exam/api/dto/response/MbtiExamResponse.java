@@ -9,7 +9,7 @@ import lombok.Getter;
 public class MbtiExamResponse {
 
     private String content;
-    private String mbtiType;
+    private Character mbtiType;
 
     public static MbtiExamResponse from(MbtiExam mbtiExam) {
         return new MbtiExamResponse(mbtiExam.getQuestion(), mbtiExam.getMbtiType());
