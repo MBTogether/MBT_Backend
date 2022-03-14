@@ -17,12 +17,12 @@ public class PostGoodController {
     private final PostGoodService postGoodService;
 
     @PostMapping("/board/like")
-    public void insertGood(@RequestBody @Valid GoodDto dto, AuthenticationFacade authenticationFacade){
-        postGoodService.insertGood(dto.getPostId(), authenticationFacade.getUserId());
+    public void insertGood(@RequestBody @Valid GoodDto dto){
+        postGoodService.insertGood(dto.getPostId());
     }
 
     @DeleteMapping("/board/like/{postId}")
-    public void deleteGood(@PathVariable("postId") String id, AuthenticationFacade authenticationFacade){
-        postGoodService.deleteGood(id, authenticationFacade.getUserId());
+    public void deleteGood(@PathVariable("postId") String id){
+        postGoodService.deleteGood(id);
     }
 }

@@ -9,6 +9,7 @@ import com.example.mbtogether.domain.user.entity.User;
 import com.example.mbtogether.domain.user.repository.UserRepository;
 import com.example.mbtogether.global.error.ErrorCode;
 import com.example.mbtogether.global.error.exception.CustomException;
+import com.example.mbtogether.global.security.AuthenticationFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,15 +20,16 @@ public class PostGoodServiceImpl implements PostGoodService {
     private final PostGoodRepository goodRepository;
     private final PostRepository  postRepository;
     private final UserRepository userRepository;
+    private final AuthenticationFacade authenticationFacade;
 
     private boolean isNotAlreadyLike(User user, Post post){
         return goodRepository.findByUserAndPost(user, post).isEmpty();
     }
 
     @Override
-    public void insertGood(int postId, int userId) {
+    public void insertGood(int postId) {
         Post post = postRepository.findById(postId).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND));
-        User user = userRepository.findById(userId).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND));
+        User user = userRepository.findById(authenticationFacade.getUserId()).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND));
         Good good = new Good(post, user);
 
         if(isNotAlreadyLike(good.getUser(), post)){
@@ -39,8 +41,8 @@ public class PostGoodServiceImpl implements PostGoodService {
     }
 
     @Override
-    public void deleteGood(String postId, int userId) {
-        String to = Integer.toString(userId);
+    public void deleteGood(String postId) {
+        String to = Integer.toString(authenticationFacade.getUserId());
         GoodId id = new GoodId(postId, to);
         Good good = goodRepository.findById(id).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND));
         goodRepository.delete(good);

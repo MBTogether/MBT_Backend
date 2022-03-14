@@ -3,11 +3,11 @@ package com.example.mbtogether.domain.good.controller.request;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @NoArgsConstructor
 public class GoodDto {
-    @NotEmpty
+    @NotNull
     private int postId;
 }
