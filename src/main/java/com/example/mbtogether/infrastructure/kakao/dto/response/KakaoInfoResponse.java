@@ -1,4 +1,4 @@
-package com.example.mbtogether.infrastructure.dto.response;
+package com.example.mbtogether.infrastructure.kakao.dto.response;
 
 import lombok.Getter;
 

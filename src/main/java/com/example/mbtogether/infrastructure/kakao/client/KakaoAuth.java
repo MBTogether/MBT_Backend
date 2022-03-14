@@ -1,7 +1,7 @@
-package com.example.mbtogether.infrastructure.client;
+package com.example.mbtogether.infrastructure.kakao.client;
 
-import com.example.mbtogether.infrastructure.dto.request.KakaoTokenRequest;
-import com.example.mbtogether.infrastructure.dto.response.KakaoTokenResponse;
+import com.example.mbtogether.infrastructure.kakao.dto.request.KakaoTokenRequest;
+import com.example.mbtogether.infrastructure.kakao.dto.response.KakaoTokenResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 
