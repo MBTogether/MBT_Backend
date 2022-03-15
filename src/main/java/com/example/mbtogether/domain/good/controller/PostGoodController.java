@@ -18,7 +18,7 @@ public class PostGoodController {
 
     @PostMapping("/board/like")
     public void insertGood(@RequestBody @Valid GoodDto dto){
-        postGoodService.insertGood(dto.getPostId());
+        postGoodService.insertGood(dto.getPost_id());
     }
 
     @DeleteMapping("/board/like/{postId}")

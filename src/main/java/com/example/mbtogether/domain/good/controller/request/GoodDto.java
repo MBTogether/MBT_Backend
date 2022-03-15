@@ -1,13 +1,11 @@
 package com.example.mbtogether.domain.good.controller.request;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
-import javax.validation.constraints.NotNull;
+import lombok.*;
 
 @Getter
+@AllArgsConstructor
 @NoArgsConstructor
 public class GoodDto {
-    @NotNull
-    private int postId;
+    @NonNull
+    private int post_id;
 }
