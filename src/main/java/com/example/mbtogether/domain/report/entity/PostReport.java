@@ -32,4 +32,8 @@ public class PostReport {
     @Column(nullable = false)
     private String content;
 
+    public PostReport(Post post_id, String content){
+        this.post = post_id;
+        this.content = content;
+    }
 }
