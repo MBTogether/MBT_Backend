@@ -23,8 +23,8 @@ public class CommentGoodServiceImpl implements CommentGoodService{
     private final AuthenticationFacade authenticationFacade;
 
     @Override
-    public void insertGood(int commentId) {
-        Comment comment = commentRepository.findById(commentId).orElseThrow(() -> new CustomException(ErrorCode.OTHER_SERVER_NOT_FOUND));
+    public void insertGood(int comment_id) {
+        Comment comment = commentRepository.findById(comment_id).orElseThrow(() -> new CustomException(ErrorCode.OTHER_SERVER_NOT_FOUND));
         User user = userRepository.findById(authenticationFacade.getUserId()).orElseThrow(() -> new CustomException(ErrorCode.OTHER_SERVER_NOT_FOUND));
 
         CommentGood commentGood = new CommentGood(comment, user);
@@ -37,9 +37,9 @@ public class CommentGoodServiceImpl implements CommentGoodService{
     }
 
     @Override
-    public void deleteGood(String commentId, int userId) {
-        String userid = Integer.toString(userId);
-        CommentGoodId id = new CommentGoodId(commentId, userid);
+    public void deleteGood(String comment_id, int user_id) {
+        String userid = Integer.toString(user_id);
+        CommentGoodId id = new CommentGoodId(comment_id, userid);
         CommentGood commentGood = commentGoodRepository.findById(id).orElseThrow(() -> new CustomException(ErrorCode.OTHER_SERVER_NOT_FOUND));
         commentGoodRepository.delete(commentGood);
     }

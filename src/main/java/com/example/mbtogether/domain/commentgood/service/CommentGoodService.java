@@ -1,7 +1,7 @@
 package com.example.mbtogether.domain.commentgood.service;
 
 public interface CommentGoodService {
-    void insertGood(int commentId);
+    void insertGood(int comment_id);
 
-    void deleteGood(String commentId, int userId);
+    void deleteGood(String comment_id, int user_id);
 }
