@@ -1,4 +1,4 @@
-package com.example.mbtogether.domain.good.entity;
+package com.example.mbtogether.domain.commentgood.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,10 +12,10 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Embeddable
-public class GoodId implements Serializable {
+public class CommentGoodId implements Serializable {
 
     @Column(nullable = false)
-    private String postId;
+    private String commentId;
 
     @Column(nullable = false)
     private String userId;
